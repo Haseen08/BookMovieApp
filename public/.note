@@ -1,0 +1,10 @@
+curl -X POST --header 'Content-Type: application/json;charset=UTF-8' --header 'Accept: application/json' -d '{ \ 
+   "email_address": "mohdraheem%40gmail.com", \ 
+   "first_name": "Mohammad", \ 
+   "last_name": "Raheem", \ 
+   "mobile_number": "8892707832", \ 
+   "password": "123456" \ 
+ }' 'http://localhost:8085/api/v1/signup'
+
+
+ 
