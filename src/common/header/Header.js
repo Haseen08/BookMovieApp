@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.css';
 import logo from '../../assets/logo.svg';
 
 import Button from '@material-ui/core/Button';
 
 import Modal from 'react-modal';
-import { Tab, Tabs } from '@material-ui/core';
+import { Grid, Tab, Tabs } from '@material-ui/core';
 import Login from '../login/Login';
 import Signup from '../signup/Signup';
 
 const Header = () => {
     const [modalIsOpen, setIsOpen] = React.useState(false);
     const [value, setValue] = React.useState('1');
+    const [bookShow, setBookShow] = useState(false);
+
+    const queryParams = window.location.pathname;
+
+    const matches = queryParams.match('/movie/*')
+
+    useEffect(() => {
+        if (matches !== null && matches.length) {
+            setBookShow(true)
+        }
+    }, [matches])
+
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -41,11 +54,26 @@ const Header = () => {
     };
     return (
         <div className="header" >
-            <img src={logo} className='logo' alt='logo'></img>
+            <Grid container justifyContent="flex-end">
+                <Grid xs={10}>
+                    <img src={logo} className='logo' alt='logo'></img>
+                </Grid>
+                <Grid xs={1}>
+                    {bookShow ?
+                        <Button variant="contained" onClick={login} color='primary'>
+                            BOOKSHOW
+                        </Button> :
+                        null
+                    }
+                </Grid>
+                <Grid  >
+                    <Button variant="contained" onClick={login}>
+                        LOGIN
+                    </Button>
 
-            <Button variant="contained" onClick={login} className="logins">
-                Login
-            </Button>
+                </Grid>
+            </Grid>
+
             <Modal
                 isOpen={modalIsOpen}
                 onAfterOpen={afterOpenModal}
@@ -75,7 +103,7 @@ const TabPane1 = (props) => {
     const { children, value, index } = props;
     return (
         <div>
-            {value === index.toString() && (children == 'Login' ? <Login {...props} /> : <Signup {...props}/>)}
+            {value === index.toString() && (children == 'Login' ? <Login {...props} /> : <Signup {...props} />)}
         </div>
     )
 }

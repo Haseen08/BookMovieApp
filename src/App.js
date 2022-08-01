@@ -2,14 +2,14 @@ import React from "react";
 import Header from "./common/header/Header";
 import Controller from "./screens/Controller";
   
-function App() {
+function App(props) {
   return (
   
    // Using the newly created Header 
    // component in this main component
    <div>
    
-   <Header />
+   <Header {...props} />
    <Controller />
    </div>
   );
