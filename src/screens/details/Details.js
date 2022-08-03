@@ -41,29 +41,30 @@ const Details = (props) => {
           <div>
             <Typography variant="headline" component="h2">
               Genre :
+              {genre}
             </Typography>
-            {genre}
           </div>
-
           <div>
             <Typography variant="headline" component="h2">
               Duration :
+              {movieData.duration}
             </Typography>
-            {movieData.duration}
           </div>
 
           <div>
             <Typography variant="headline" component="h2">
               Relaese Date :
+              {movieData.release_date}
             </Typography>
-            {movieData.release_date}
+           
           </div>
 
           <div>
             <Typography variant="headline" component="h2">
               Rating :
+              {movieData.rating}
             </Typography>
-            {movieData.rating}
+           
           </div>
 
           <div>
